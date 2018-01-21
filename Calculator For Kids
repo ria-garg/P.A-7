@@ -91,7 +91,7 @@ import javax.swing.event.ChangeListener;
             //font
             addButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             //button color
-            addButton.setBackground(Color.YELLOW);
+            addButton.setBackground(Color.ORANGE);
             addButton.setForeground(Color.WHITE);
           minusButton = new JButton("-"); 
             minusButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
