@@ -116,7 +116,20 @@ import javax.swing.*;
          N1 = Integer.parseInt(number1);
          N2 = Integer.parseInt(number2);
          
-         tl.setText(Integer.toString(N1 + N2));
+         JButton sourceEvent = (JButton) event.getSource();
+         
+         if (sourceEvent == addButton) {
+            tl.setText(Integer.toString(N1 + N2));
+         }
+         if (sourceEvent == minusButton) {
+            tl.setText(Integer.toString(N1 - N2));
+         }
+         if (sourceEvent == timesButton) {
+            tl.setText(Integer.toString(N1 * N2));
+         }
+         if (sourceEvent == divideButton) {
+            tl.setText(Integer.toString(N1 / N2));
+         }
 
       return;
    }
