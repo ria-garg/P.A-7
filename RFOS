@@ -44,11 +44,25 @@ public class PA7{
       outputField.setEditable(false);
 
       // Create window 
-      topFrame = new JFrame("Salary");
+      topFrame = new JFrame("Resteraunt Menu");
 
       // Add text field to window
       topFrame.add(outputField);
+ // Use a GridBagLayout
+      topFrame.setLayout(new GridBagLayout());
 
+      // Create GridBagConstraints
+      layoutConst = new GridBagConstraints();
+      
+      // Specify component's grid location
+      layoutConst.gridx = 10;
+      layoutConst.gridy = 10;
+      
+      // 10 pixels of padding around component
+      layoutConst.insets = new Insets(0, 10, 10, 0);
+      
+      // Add component using the specified constraints
+      topFrame.add(outputField, layoutConst);
       // Resize window to fit components 
       topFrame.pack();
 
