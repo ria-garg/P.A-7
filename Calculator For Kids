@@ -26,10 +26,11 @@ import javax.swing.event.ChangeListener;
     private JLabel total; 
     private JTextField tl; 
     private JTextField exp1;
-   private JTextField exp2;
-   private JLabel expNum1;
-   private JLabel expNum2;
-   private JSpinner xSpinner;
+    private JTextField exp2;
+    private JLabel expNum1;
+    private JLabel expNum2;
+    private JSpinner xSpinner;
+    private JSpinner xSpinner2;
      
        //constructor 
        calculator(){ 
@@ -37,6 +38,16 @@ import javax.swing.event.ChangeListener;
           GridBagConstraints positionConst = null; 
            
           setTitle("Calculator"); 
+          
+          
+           // Specifies the types of values displayed in spinner
+          SpinnerNumberModel spinnerModel = null;
+          SpinnerNumberModel spinnerModel2 = null;
+          int initYear = 0; // Spinner initial value display
+          int minYear = 0;  // Spinner min value
+          int maxYear = 30; // Spinner max value
+          int stepVal = 1;  // Spinner step
+      
            
           number1 = new JLabel("Enter Digit");
           number1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
@@ -47,6 +58,17 @@ import javax.swing.event.ChangeListener;
           
          expNum1 = new JLabel("x^n");
          expNum2 = new JLabel("x^n");
+         
+         
+         // Create a spinner model, the spinner, and set the change listener
+      spinnerModel = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
+      xSpinner = new JSpinner(spinnerModel);
+      
+      spinnerModel2 = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
+      xSpinner2 = new JSpinner(spinnerModel2);//xSpinner.addChangeListener();
+      
+      
+
             //color label
             Color green = new Color (50,200,25);
             total.setOpaque(true);            
@@ -63,14 +85,7 @@ import javax.swing.event.ChangeListener;
           tl = new JTextField(15); 
           tl.setEditable(false); 
           
-           exp1 = new JTextField(15);
-         exp1.setEditable(true);
-         exp1.setText("0");
-         
-         exp2 = new JTextField(15);
-         exp2.setEditable(true);
-         exp2.setText("0");
-
+ 
            
           addButton = new JButton("+");
             //font
@@ -120,7 +135,7 @@ import javax.swing.event.ChangeListener;
           positionConst.insets = new Insets(10, 10, 10, 10); 
           add(num2, positionConst); 
      
-            positionConst.gridx = 3;
+         positionConst.gridx = 3;
          positionConst.gridy = 3;
          positionConst.insets = new Insets(10, 10, 10, 10);
          add(addButton, positionConst);
@@ -160,18 +175,18 @@ import javax.swing.event.ChangeListener;
          positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
          add(expNum2, positionConst);
        
-       
-         positionConst.gridx = 3;
-         positionConst.gridy = 1;
-         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
-         add(exp1, positionConst);
-         
+                 
          positionConst.gridx = 3;
          positionConst.gridy = 0;
          positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
-         add(exp2, positionConst);
-          
-          
+         add(xSpinner, positionConst);
+         
+          positionConst.gridx = 3;
+         positionConst.gridy = 1;
+         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
+         add(xSpinner2, positionConst);
+         
+
        }    
        @Override 
         
