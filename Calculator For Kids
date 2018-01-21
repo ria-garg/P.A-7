@@ -1,150 +1,168 @@
-import java.awt.*;
-import java.awt.event.*;
-import java.text.*;
-import java.util.*;
-import javax.swing.*;
-
-//--------------------------------------------------------------------------------------------------------------------------------
-   public class calculator extends JFrame implements ActionListener{
-   
-   private JLabel number1;     // Label for number 1
-   private JLabel number2;     // Label for numver 2
-   private JTextField num1;    // Displays number 1
-   private JTextField num2;    // Displays number 2
-   private JButton addButton;
-   private JButton minusButton;
-   private JButton timesButton;
-   private JButton divideButton;
-   private JLabel total;
-   private JTextField tl;
-   
-      //constructor
-      calculator(){
-      
-         GridBagConstraints positionConst = null;
-         
-         setTitle("Calculator");
-         
-         number1 = new JLabel("Enter Digit");
-         number2 = new JLabel("Enter Digit");
-         total = new JLabel("Answer");
-         
-         num1 = new JTextField(15);
-         num1.setEditable(true);
-         num1.setText("0");
-   
-         num2 = new JTextField(15);
-         num2.setEditable(true);
-         num2.setText("0");
-         
-         tl = new JTextField(15);
-         tl.setEditable(false);
-         
-         addButton = new JButton("+");
-         minusButton = new JButton("-");
-         timesButton = new JButton("*");
-         divideButton = new JButton("/");
-         
-         addButton.addActionListener(this);
-         minusButton.addActionListener(this);
-         timesButton.addActionListener(this);
-         divideButton.addActionListener(this);
-         
-         setLayout(new GridBagLayout());
-         positionConst = new GridBagConstraints();
-         
-         // Specify component's grid location
-         positionConst.gridx = 0;
-         positionConst.gridy = 0;
-         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
-         add(number1, positionConst);
-   
-         positionConst.gridx = 1;
-         positionConst.gridy = 0;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(num1, positionConst);
-   
-         positionConst.gridx = 0;
-         positionConst.gridy = 1;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(number2, positionConst);
-   
-         positionConst.gridx = 1;
-         positionConst.gridy = 1;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(num2, positionConst);
-   
-         positionConst.gridx = 2;
-         positionConst.gridy = 0;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(addButton, positionConst);
-         
-         positionConst.gridx = 2;
-         positionConst.gridy = 1;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(minusButton, positionConst);
-         
-         positionConst.gridx = 3;
-         positionConst.gridy = 0;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(timesButton, positionConst);
-         
-         positionConst.gridx = 3;
-         positionConst.gridy = 1;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(divideButton, positionConst);
-         
-         positionConst.gridx = 0;
-         positionConst.gridy = 3;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(total, positionConst);
-         
-         positionConst.gridx = 1;
-         positionConst.gridy = 3;
-         positionConst.insets = new Insets(10, 10, 10, 10);
-         add(tl, positionConst);
-      }   
-      @Override
-      
-      public void actionPerformed(ActionEvent event) {
+import java.awt.*; 
+import java.awt.event.*; 
+import java.text.*; 
+import java.util.*; 
+import javax.swing.*; 
+ 
+ 
+ //-------------------------------------------------------------------------------------------------------------------------------- 
+    public class calculator extends JFrame implements ActionListener{ 
+     
+    private JLabel number1;     // Label for number 1 
+    private JLabel number2;     // Label for number 2 
+    private JTextField num1;    // Displays number 1 
+    private JTextField num2;    // Displays number 2 
+    private JButton addButton; 
+    private JButton minusButton; 
+    private JButton timesButton; 
+    private JButton divideButton; 
+    private JLabel total; 
+    private JTextField tl; 
+     
+       //constructor 
+       calculator(){ 
         
-         String number1 = num1.getText();
-         String number2 = num2.getText();
-         double N1 = 0; 
-         double N2 = 0;
-         
-         N1 = Double.parseDouble(number1);
-         N2 = Double.parseDouble(number2);
-         
-         JButton sourceEvent = (JButton) event.getSource();
-         
-         if (sourceEvent == addButton) {
-            tl.setText(Double.toString(N1 + N2));
-         }
-         if (sourceEvent == minusButton) {
-            tl.setText(Double.toString(N1 - N2));
-         }
-         if (sourceEvent == timesButton) {
-            tl.setText(Double.toString(N1 * N2));
-         }
-         if (sourceEvent == divideButton) {
-            if (N2 == 0){
-            JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO");
-            }
-            tl.setText(Double.toString(N1 / N2));
-         }
+          GridBagConstraints positionConst = null; 
+           
+          setTitle("Calculator"); 
+           
+          number1 = new JLabel("Enter Digit");           
+          number2 = new JLabel("Enter Digit"); 
+          total = new JLabel("ANSWER");
+            //color label
+            Color green = new Color (50,200,25);
+            total.setOpaque(true);            
+            total.setForeground(green);
+           
+          num1 = new JTextField(15); 
+          num1.setEditable(true); 
+          num1.setText("0"); 
+     
+          num2 = new JTextField(15); 
+          num2.setEditable(true); 
+          num2.setText("0"); 
+           
+          tl = new JTextField(15); 
+          tl.setEditable(false); 
+           
+          addButton = new JButton("+"); 
+            //button color
+            addButton.setBackground(Color.YELLOW);
+            addButton.setForeground(Color.WHITE);
+          minusButton = new JButton("-"); 
+            minusButton.setBackground(Color.BLUE);
+            minusButton.setForeground(Color.WHITE);
+          timesButton = new JButton("*"); 
+            timesButton.setBackground(Color.BLACK);
+            timesButton.setForeground(Color.WHITE);
+          divideButton = new JButton("/"); 
+            divideButton.setBackground(Color.RED);
+            divideButton.setForeground(Color.WHITE);
+           
+          addButton.addActionListener(this); 
+          minusButton.addActionListener(this); 
+          timesButton.addActionListener(this); 
+          divideButton.addActionListener(this); 
+           
+          setLayout(new GridBagLayout()); 
+          positionConst = new GridBagConstraints(); 
+           
+          // Specify component's grid location 
+          positionConst.gridx = 0; 
+          positionConst.gridy = 0; 
+          positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right 
+          add(number1, positionConst); 
+     
+          positionConst.gridx = 1; 
+          positionConst.gridy = 0; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(num1, positionConst); 
+     
+          positionConst.gridx = 0; 
+          positionConst.gridy = 1; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(number2, positionConst); 
+     
+          positionConst.gridx = 1; 
+          positionConst.gridy = 1; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(num2, positionConst); 
+     
+          positionConst.gridx = 2; 
+          positionConst.gridy = 0; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(addButton, positionConst); 
+           
+          positionConst.gridx = 2; 
+          positionConst.gridy = 1; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(minusButton, positionConst); 
+           
+          positionConst.gridx = 3; 
+          positionConst.gridy = 0; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(timesButton, positionConst); 
+           
+          positionConst.gridx = 3; 
+          positionConst.gridy = 1; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(divideButton, positionConst); 
+           
+          positionConst.gridx = 0; 
+          positionConst.gridy = 3; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(total, positionConst); 
+           
+          positionConst.gridx = 1; 
+          positionConst.gridy = 3; 
+          positionConst.insets = new Insets(10, 10, 10, 10); 
+          add(tl, positionConst); 
+          
+          
+       }    
+       @Override 
+        
+       public void actionPerformed(ActionEvent event) { 
+          
+          String number1 = num1.getText(); 
+          String number2 = num2.getText(); 
+          double N1 = 0;  
+          double N2 = 0; 
+           
+          N1 = Double.parseDouble(number1); 
+          N2 = Double.parseDouble(number2); 
+           
+          JButton sourceEvent = (JButton) event.getSource(); 
+           
+          if (sourceEvent == addButton) { 
+             tl.setText(Double.toString(N1 + N2)); 
+          } 
+          if (sourceEvent == minusButton) { 
+             tl.setText(Double.toString(N1 - N2)); 
+          } 
+          if (sourceEvent == timesButton) { 
+             tl.setText(Double.toString(N1 * N2)); 
+          } 
+          if (sourceEvent == divideButton) { 
+             if (N2 == 0){ 
+             JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO"); 
+             } 
+             tl.setText(Double.toString(N1 / N2)); 
+          } 
+ 
+ 
+       return; 
+    } 
+ 
+    public static void main(String[] args){ 
+     
+       calculator myFrame = new calculator(); 
+ 
+       myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+       myFrame.pack(); 
+       myFrame.setVisible(true); 
+ 
 
-      return;
-   }
-
-   public static void main(String[] args){
-   
-      calculator myFrame = new calculator();
-
-      myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      myFrame.pack();
-      myFrame.setVisible(true);
-
-   }
-//-------------------------------------------------------------------------------------------------------------------------------- 
-}
+    } 
+ //--------------------------------------------------------------------------------------------------------------------------------  
+ } 
