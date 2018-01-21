@@ -110,28 +110,28 @@ import javax.swing.*;
         
          String number1 = num1.getText();
          String number2 = num2.getText();
-         int N1 = 0; 
-         int N2 = 0;
+         double N1 = 0; 
+         double N2 = 0;
          
-         N1 = Integer.parseInt(number1);
-         N2 = Integer.parseInt(number2);
+         N1 = Double.parseDouble(number1);
+         N2 = Double.parseDouble(number2);
          
          JButton sourceEvent = (JButton) event.getSource();
          
          if (sourceEvent == addButton) {
-            tl.setText(Integer.toString(N1 + N2));
+            tl.setText(Double.toString(N1 + N2));
          }
          if (sourceEvent == minusButton) {
-            tl.setText(Integer.toString(N1 - N2));
+            tl.setText(Double.toString(N1 - N2));
          }
          if (sourceEvent == timesButton) {
-            tl.setText(Integer.toString(N1 * N2));
+            tl.setText(Double.toString(N1 * N2));
          }
          if (sourceEvent == divideButton) {
             if (N2 == 0){
             JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO");
             }
-            tl.setText(Integer.toString(N1 / N2));
+            tl.setText(Double.toString(N1 / N2));
          }
 
       return;
