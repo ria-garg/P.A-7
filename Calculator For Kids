@@ -128,6 +128,9 @@ import javax.swing.*;
             tl.setText(Integer.toString(N1 * N2));
          }
          if (sourceEvent == divideButton) {
+            if (N2 == 0){
+            JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO");
+            }
             tl.setText(Integer.toString(N1 / N2));
          }
 
