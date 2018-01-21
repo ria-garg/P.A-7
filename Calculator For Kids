@@ -3,6 +3,13 @@ import java.awt.event.*;
 import java.text.*; 
 import java.util.*; 
 import javax.swing.*; 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
  
  
  //-------------------------------------------------------------------------------------------------------------------------------- 
@@ -18,6 +25,11 @@ import javax.swing.*;
     private JButton divideButton; 
     private JLabel total; 
     private JTextField tl; 
+    private JTextField exp1;
+   private JTextField exp2;
+   private JLabel expNum1;
+   private JLabel expNum2;
+   private JSpinner xSpinner;
      
        //constructor 
        calculator(){ 
@@ -32,6 +44,9 @@ import javax.swing.*;
           number2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           total = new JLabel("ANSWER");
           total.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          
+         expNum1 = new JLabel("x^n");
+         expNum2 = new JLabel("x^n");
             //color label
             Color green = new Color (50,200,25);
             total.setOpaque(true);            
@@ -47,6 +62,15 @@ import javax.swing.*;
            
           tl = new JTextField(15); 
           tl.setEditable(false); 
+          
+           exp1 = new JTextField(15);
+         exp1.setEditable(true);
+         exp1.setText("0");
+         
+         exp2 = new JTextField(15);
+         exp2.setEditable(true);
+         exp2.setText("0");
+
            
           addButton = new JButton("+");
             //font
@@ -96,35 +120,56 @@ import javax.swing.*;
           positionConst.insets = new Insets(10, 10, 10, 10); 
           add(num2, positionConst); 
      
-          positionConst.gridx = 2; 
-          positionConst.gridy = 0; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(addButton, positionConst); 
-           
-          positionConst.gridx = 2; 
-          positionConst.gridy = 1; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(minusButton, positionConst); 
-           
-          positionConst.gridx = 3; 
-          positionConst.gridy = 0; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(timesButton, positionConst); 
-           
-          positionConst.gridx = 3; 
-          positionConst.gridy = 1; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(divideButton, positionConst); 
-           
-          positionConst.gridx = 0; 
-          positionConst.gridy = 3; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(total, positionConst); 
-           
-          positionConst.gridx = 1; 
-          positionConst.gridy = 3; 
-          positionConst.insets = new Insets(10, 10, 10, 10); 
-          add(tl, positionConst); 
+            positionConst.gridx = 3;
+         positionConst.gridy = 3;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(addButton, positionConst);
+         
+         positionConst.gridx = 2;
+         positionConst.gridy = 2;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(minusButton, positionConst);
+         
+         positionConst.gridx = 3;
+         positionConst.gridy = 2;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(timesButton, positionConst);
+         
+         positionConst.gridx = 2;
+         positionConst.gridy = 3;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(divideButton, positionConst);
+         
+         positionConst.gridx = 0;
+         positionConst.gridy = 3;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(total, positionConst);
+         
+         positionConst.gridx = 1;
+         positionConst.gridy = 3;
+         positionConst.insets = new Insets(10, 10, 10, 10);
+         add(tl, positionConst);
+         
+         positionConst.gridx = 2;
+         positionConst.gridy = 0;
+         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
+         add(expNum1, positionConst);
+      
+         positionConst.gridx = 2;
+         positionConst.gridy = 1;
+         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
+         add(expNum2, positionConst);
+       
+       
+         positionConst.gridx = 3;
+         positionConst.gridy = 1;
+         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
+         add(exp1, positionConst);
+         
+         positionConst.gridx = 3;
+         positionConst.gridy = 0;
+         positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
+         add(exp2, positionConst);
           
           
        }    
