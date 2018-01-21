@@ -26,9 +26,12 @@ import javax.swing.*;
            
           setTitle("Calculator"); 
            
-          number1 = new JLabel("Enter Digit");           
+          number1 = new JLabel("Enter Digit");
+          number1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           number2 = new JLabel("Enter Digit"); 
+          number2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           total = new JLabel("ANSWER");
+          total.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             //color label
             Color green = new Color (50,200,25);
             total.setOpaque(true);            
@@ -45,17 +48,22 @@ import javax.swing.*;
           tl = new JTextField(15); 
           tl.setEditable(false); 
            
-          addButton = new JButton("+"); 
+          addButton = new JButton("+");
+            //font
+            addButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             //button color
             addButton.setBackground(Color.YELLOW);
             addButton.setForeground(Color.WHITE);
           minusButton = new JButton("-"); 
+            minusButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             minusButton.setBackground(Color.BLUE);
             minusButton.setForeground(Color.WHITE);
           timesButton = new JButton("*"); 
+            timesButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             timesButton.setBackground(Color.BLACK);
             timesButton.setForeground(Color.WHITE);
           divideButton = new JButton("/"); 
+            divideButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
             divideButton.setBackground(Color.RED);
             divideButton.setForeground(Color.WHITE);
            
