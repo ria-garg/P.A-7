@@ -11,14 +11,16 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
 //---------------------------------------------------------------------------------------------------------------------------------    
     
     private JLabel number1;        // Label 
-    private JLabel number2;    
+    private JLabel number2;
+    
     private JTextField num1;       // Display
-    private JTextField num2;    
+    private JTextField num2;
+    
     private JButton addButton; 
     private JButton minusButton;   // Button
     private JButton timesButton; 
     private JButton divideButton; 
-    private JLabel total; 
+    private JLabel total;
     private JTextField tl; 
     private JTextField exp1;
     private JTextField exp2;
@@ -39,32 +41,40 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
           // Specifies the types of values displayed in spinner
           SpinnerNumberModel spinnerModel = null;
           SpinnerNumberModel spinnerModel2 = null;
-          int initYear = 1;         // Spinner initial value display
-          int minYear = 1;          // Spinner min value
-          int maxYear = 100000000;  // Spinner max value
+          
+          int init = 1;         // Spinner initial value display
+          int min = 1;          // Spinner min value
+          int max = 100000000;  // Spinner max value
           int stepVal = 1;          // Spinner step
+          
           int sMin = 0;             // Slider min value
           int sMax = 10;            // Slider max value
           
-          // Labels
+          // Creating Labels for each textbox, as well as setting the font
           number1 = new JLabel("Enter Digit 1 (x):");
           number1.setFont(new Font("Courier", Font.PLAIN, 32));
+          
           number2 = new JLabel("Enter Digit 2 (y):"); 
           number2.setFont(new Font("Courier", Font.PLAIN, 32));
+          
           total = new JLabel("           ANSWER:");
           total.setFont(new Font("Courier", Font.PLAIN, 32));
+          
           expNum1 = new JLabel("              x^n:");
           expNum1.setFont(new Font("Courier", Font.PLAIN, 32));
+          
           expNum2 = new JLabel("              y^n:");
           expNum2.setFont(new Font("Courier", Font.PLAIN, 32));
+          
           currGrade = new JLabel(" Mood from 0 - 10:");
           currGrade.setFont(new Font("Courier", Font.PLAIN, 32));
          
           // Create a spinner model, the spinner, and set the change listener
-          spinnerModel = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
+          spinnerModel = new SpinnerNumberModel(init, min, max, stepVal);
           xSpinner = new JSpinner(spinnerModel);
           xSpinner.setFont(new Font("Courier", Font.PLAIN, 32));
-          spinnerModel2 = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
+          
+          spinnerModel2 = new SpinnerNumberModel(init, min, max, stepVal);
           xSpinner2 = new JSpinner(spinnerModel2);//xSpinner.addChangeListener();
           xSpinner2.setFont(new Font("Courier", Font.PLAIN, 32));       
   
@@ -88,30 +98,35 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
           addButton.setFont(new Font("Courier", Font.PLAIN, 35));
           addButton.setBackground(Color.PINK);
           addButton.setForeground(Color.WHITE);
+          
           minusButton = new JButton("-"); 
           minusButton.setFont(new Font("Courier", Font.PLAIN, 35));
           minusButton.setBackground(Color.PINK);
           minusButton.setForeground(Color.WHITE);
+          
           timesButton = new JButton("*"); 
           timesButton.setFont(new Font("Courier", Font.PLAIN, 35));
           timesButton.setBackground(Color.PINK);
           timesButton.setForeground(Color.WHITE);
+          
           divideButton = new JButton("/"); 
           divideButton.setFont(new Font("Courier", Font.PLAIN, 35));
           divideButton.setBackground(Color.PINK);
           divideButton.setForeground(Color.WHITE);
+          
           surprise = new JButton("!!!!!!!!!!!!!!"); 
           surprise.setFont(new Font("Courier", Font.PLAIN, 35));
           surprise.setBackground(Color.PINK);
           surprise.setForeground(Color.WHITE);
 
+          // adding action listener to each button
           addButton.addActionListener(this); 
           minusButton.addActionListener(this); 
           timesButton.addActionListener(this); 
           divideButton.addActionListener(this);
           surprise.addActionListener(this);
           
-          // Slider
+          // Creating a new Slider with a new font and specified spacing
           grade = new JSlider(sMin, sMax);
           grade.setFont(new Font("Courier", Font.PLAIN, 32));
           grade.setMajorTickSpacing(10);
@@ -213,12 +228,14 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
 
 //---------------------------------------------------------------------------------------------------------------------------------
        
-       public void actionPerformed(ActionEvent event) { 
+       public void actionPerformed(ActionEvent event) { // What the Action Listener is implementing when the user interacts 
 
           String number1 = num1.getText(); 
           String number2 = num2.getText(); 
           Integer exp1 = (Integer)xSpinner.getValue();
           Integer exp2 = (Integer)xSpinner2.getValue();
+          
+          // storing user input into variables
           double N1 = 0;  
           double N2 = 0; 
           Integer E1 = 0;
@@ -247,7 +264,7 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
           } 
           if (sourceEvent == divideButton) { 
              if (N2 == 0){ 
-             JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO"); 
+                JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO"); 
              } 
              tl.setText(Double.toString(Math.pow(N1,E1) / Math.pow(N2,E2))); 
           } 
@@ -261,9 +278,9 @@ public class calculator extends JFrame implements ActionListener{ // Calling sup
     
 //---------------------------------------------------------------------------------------------------------------------------------
     
-    public static void main(String[] args){ 
+    public static void main(String[] args){ // main method where the GUI is called
      
-       calculator myFrame = new calculator(); 
+       calculator myFrame = new calculator(); // creating new object of calculator class
  
        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
        myFrame.pack(); 
