@@ -1,5 +1,4 @@
-// import statements 
-
+// Importing statements that allow for the GUI to work
 import java.awt.*; 
 import java.awt.event.*; 
 import java.text.*; 
@@ -7,133 +6,115 @@ import java.util.*;
 import javax.swing.*; 
 import java.lang.Math;
 
-public class calculator extends JFrame implements ActionListener{ 
+public class calculator extends JFrame implements ActionListener{ // Calling superclass of JFrame into subclass of calculator
 
 //---------------------------------------------------------------------------------------------------------------------------------    
     
-    private JLabel number1; // Label for number 1 
-    private JLabel number2; // Label for number 2 
-    private JLabel total; // Label for the text book with the answer
-    private JLabel expNum1; // Label for exp1
-    private JLabel expNum2; // Label for exp2
-    private JLabel currGrade; // Label for The Slider
-    
-    private JTextField tl; //Displays answer
-    private JTextField exp1; // Displays the exponent number for number1
-    private JTextField exp2; //Displays the exponent number for number2
-    private JTextField num1; // Displays number 1 
-    private JTextField num2; // Displays number 2 
-    
-    private JButton addButton; // Button for the adding function
-    private JButton minusButton; // Button for the subtracting function
-    private JButton timesButton; // Button for the multiplying function
-    private JButton divideButton; //Button for the dividing function
-  
-        
-    private JSpinner xSpinner; // Spinner for the exponent number 1
-    private JSpinner xSpinner2; // Spinner for the exponent number 2
-    
-    private JSlider grade;// Slider for the grade
-    
-//---------------------------------------------------------------------------------------------------------------------------------
+    private JLabel number1;        // Label 
+    private JLabel number2;    
+    private JTextField num1;       // Display
+    private JTextField num2;    
+    private JButton addButton; 
+    private JButton minusButton;   // Button
+    private JButton timesButton; 
+    private JButton divideButton; 
+    private JLabel total; 
+    private JTextField tl; 
+    private JTextField exp1;
+    private JTextField exp2;
+    private JLabel expNum1;
+    private JLabel expNum2;
+    private JSpinner xSpinner;
+    private JSpinner xSpinner2;    // Spinner
+    private JLabel currGrade;
+    private JSlider grade;         // Slider
+    private JButton surprise;
      
        // Constructor 
         calculator(){ 
        
           GridBagConstraints positionConst = null; 
-          setTitle("Calculator"); 
+          setTitle("CALCULATOR FOR KIDS"); 
           
           // Specifies the types of values displayed in spinner
           SpinnerNumberModel spinnerModel = null;
           SpinnerNumberModel spinnerModel2 = null;
+          int initYear = 1;         // Spinner initial value display
+          int minYear = 1;          // Spinner min value
+          int maxYear = 100000000;  // Spinner max value
+          int stepVal = 1;          // Spinner step
+          int sMin = 0;             // Slider min value
+          int sMax = 10;            // Slider max value
           
-          int init = 1; // Spinner initial value display
-          int min = 1;  // Spinner min value
-          int max = 30; // Spinner max value
-          int stepVal = 1;  // Spinner step
-          
-          int sMin = 0;  // Slider min value
-          int sMax = 12;  // Slider max value
-          
-          // Creating Labels for each textbox, as well as setting the font
+          // Labels
           number1 = new JLabel("Enter Digit 1 (x):");
-          number1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          
+          number1.setFont(new Font("Courier", Font.PLAIN, 32));
           number2 = new JLabel("Enter Digit 2 (y):"); 
-          number2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          
-          total = new JLabel("ANSWER:");
-          total.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          
-          expNum1 = new JLabel("x^n");
-          expNum1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          
-          expNum2 = new JLabel("y^n");
-          expNum2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          
-          currGrade = new JLabel("What is your current grade level?");
-          currGrade.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          number2.setFont(new Font("Courier", Font.PLAIN, 32));
+          total = new JLabel("           ANSWER:");
+          total.setFont(new Font("Courier", Font.PLAIN, 32));
+          expNum1 = new JLabel("              x^n:");
+          expNum1.setFont(new Font("Courier", Font.PLAIN, 32));
+          expNum2 = new JLabel("              y^n:");
+          expNum2.setFont(new Font("Courier", Font.PLAIN, 32));
+          currGrade = new JLabel(" Mood from 0 - 10:");
+          currGrade.setFont(new Font("Courier", Font.PLAIN, 32));
          
           // Create a spinner model, the spinner, and set the change listener
-          spinnerModel = new SpinnerNumberModel(init, min, max, stepVal);
+          spinnerModel = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
           xSpinner = new JSpinner(spinnerModel);
-          xSpinner.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-      
-          spinnerModel2 = new SpinnerNumberModel(init, min, max, stepVal);
-          xSpinner2 = new JSpinner(spinnerModel2);
-          xSpinner2.setFont(new Font("Times New Roman", Font.PLAIN, 32));       
-                 
-          //color label; setting the different colors for each label
-          Color green = new Color (50,200,25);
-          total.setOpaque(true);            
-          total.setForeground(green);
-           
-          num1 = new JTextField(15);
-          num1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          xSpinner.setFont(new Font("Courier", Font.PLAIN, 32));
+          spinnerModel2 = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
+          xSpinner2 = new JSpinner(spinnerModel2);//xSpinner.addChangeListener();
+          xSpinner2.setFont(new Font("Courier", Font.PLAIN, 32));       
+  
+          // Setting fields
+          num1 = new JTextField(12);
+          num1.setFont(new Font("Courier", Font.PLAIN, 32));
           num1.setEditable(true); 
           num1.setText("0"); 
      
-          num2 = new JTextField(15);
-          num2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          num2 = new JTextField(12);
+          num2.setFont(new Font("Courier", Font.PLAIN, 32));
           num2.setEditable(true); 
           num2.setText("0"); 
            
-          tl = new JTextField(15);
-          tl.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          tl = new JTextField(12);
+          tl.setFont(new Font("Courier", Font.PLAIN, 32));
           tl.setEditable(false);  
           
-          // button color
+          // Button color
           addButton = new JButton("+");
-          addButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          addButton.setBackground(Color.ORANGE);
+          addButton.setFont(new Font("Courier", Font.PLAIN, 35));
+          addButton.setBackground(Color.PINK);
           addButton.setForeground(Color.WHITE);
-          
           minusButton = new JButton("-"); 
-          minusButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          minusButton.setBackground(Color.BLUE);
+          minusButton.setFont(new Font("Courier", Font.PLAIN, 35));
+          minusButton.setBackground(Color.PINK);
           minusButton.setForeground(Color.WHITE);
-          
           timesButton = new JButton("*"); 
-          timesButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          timesButton.setBackground(Color.BLACK);
+          timesButton.setFont(new Font("Courier", Font.PLAIN, 35));
+          timesButton.setBackground(Color.PINK);
           timesButton.setForeground(Color.WHITE);
-          
           divideButton = new JButton("/"); 
-          divideButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          divideButton.setBackground(Color.RED);
+          divideButton.setFont(new Font("Courier", Font.PLAIN, 35));
+          divideButton.setBackground(Color.PINK);
           divideButton.setForeground(Color.WHITE);
+          surprise = new JButton("!!!!!!!!!!!!!!"); 
+          surprise.setFont(new Font("Courier", Font.PLAIN, 35));
+          surprise.setBackground(Color.PINK);
+          surprise.setForeground(Color.WHITE);
 
-
-         // adding action listener to each button 
           addButton.addActionListener(this); 
           minusButton.addActionListener(this); 
           timesButton.addActionListener(this); 
           divideButton.addActionListener(this);
+          surprise.addActionListener(this);
           
-          // Creating a new Slider with a new font and specified spacing 
+          // Slider
           grade = new JSlider(sMin, sMax);
-          grade.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          grade.setMajorTickSpacing(6);
+          grade.setFont(new Font("Courier", Font.PLAIN, 32));
+          grade.setMajorTickSpacing(10);
           grade.setMinorTickSpacing(1);
           grade.setPaintTicks(true);
           grade.setPaintLabels(true);
@@ -144,7 +125,7 @@ public class calculator extends JFrame implements ActionListener{
            
           positionConst.gridx = 0; 
           positionConst.gridy = 0; 
-          positionConst.insets = new Insets(10, 10, 10, 10); // top,left,bottom,right 
+          positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right 
           add(number1, positionConst); 
      
           positionConst.gridx = 1; 
@@ -172,13 +153,13 @@ public class calculator extends JFrame implements ActionListener{
           positionConst.insets = new Insets(10, 10, 10, 10); 
           add(minusButton, positionConst); 
            
-          positionConst.gridx = 3; 
-          positionConst.gridy = 0; 
+          positionConst.gridx = 2; 
+          positionConst.gridy = 2; 
           positionConst.insets = new Insets(10, 10, 10, 10); 
           add(timesButton, positionConst); 
            
-          positionConst.gridx = 3; 
-          positionConst.gridy = 1; 
+          positionConst.gridx = 2; 
+          positionConst.gridy = 3; 
           positionConst.insets = new Insets(10, 10, 10, 10); 
           add(divideButton, positionConst); 
            
@@ -194,26 +175,26 @@ public class calculator extends JFrame implements ActionListener{
           
           positionConst.gridx = 0;
           positionConst.gridy = 2;
-          positionConst.insets = new Insets(10, 10, 10, 10); // top,left,bottom,right
+          positionConst.insets = new Insets(10, 10, 10, 10); 
           add(expNum1, positionConst);
       
           positionConst.gridx = 0;
           positionConst.gridy = 3;
-          positionConst.insets = new Insets(10, 10, 10, 10); // top,left,bottom,right
+          positionConst.insets = new Insets(10, 10, 10, 10);
           add(expNum2, positionConst);
                    
           positionConst.gridx = 1;
           positionConst.gridy = 2;
-          positionConst.insets = new Insets(10, 10, 10, 10); // top,left,bottom,right
+          positionConst.insets = new Insets(10, 10, 10, 10); 
           add(xSpinner, positionConst);
          
           positionConst.gridx = 1;
           positionConst.gridy = 3;
-          positionConst.insets = new Insets(10, 10, 10, 10); // top,left,bottom,right
+          positionConst.insets = new Insets(10, 10, 10, 10);
           add(xSpinner2, positionConst);
           
-          positionConst.gridx = 1;
-          positionConst.gridy = 5;
+          positionConst.gridx = 0;
+          positionConst.gridy = 6;
           positionConst.insets = new Insets(10, 10, 10, 10);
           add(currGrade, positionConst);
           
@@ -221,20 +202,23 @@ public class calculator extends JFrame implements ActionListener{
           positionConst.gridy = 6;
           positionConst.insets = new Insets(10, 10, 10, 10);
           add(grade, positionConst);
+          
+          positionConst.gridx = 0;
+          positionConst.gridy = 7;
+          positionConst.insets = new Insets(10, 10, 10, 10);
+          add(surprise, positionConst);
+          
        }    
-       
        @Override 
 
 //---------------------------------------------------------------------------------------------------------------------------------
        
-       public void actionPerformed(ActionEvent event) { // What the Action Listener is implementing when the user interacts 
+       public void actionPerformed(ActionEvent event) { 
 
-          String number1 = num1.getText(); // text from user input in first textbox
-          String number2 = num2.getText(); // text from user input in second textbox
-          Integer exp1 = (Integer)xSpinner.getValue(); // text from user input in first exponent textbox
-          Integer exp2 = (Integer)xSpinner2.getValue();// text from user input in second exponent textbox
-          
-          // storing user input into variables
+          String number1 = num1.getText(); 
+          String number2 = num2.getText(); 
+          Integer exp1 = (Integer)xSpinner.getValue();
+          Integer exp2 = (Integer)xSpinner2.getValue();
           double N1 = 0;  
           double N2 = 0; 
           Integer E1 = 0;
@@ -246,39 +230,46 @@ public class calculator extends JFrame implements ActionListener{
           E1 = exp1;
           E2 = exp2;
            
-          JButton sourceEvent = (JButton) event.getSource(); // when the user clicks one of the four buttons
-           
-          if (sourceEvent == addButton) { // if they choose to add 
-             tl.setText(Double.toString(Math.pow(N1,E1) + Math.pow(N2,E2))); 
-             
+          JButton sourceEvent = (JButton) event.getSource(); 
+          
+          // Action that happens when user presses a certain button 
+          if (sourceEvent == addButton) {
+             double add1 = Math.pow(N1,E1);
+             double add2 = Math.pow(N2,E2);
+              
+            tl.setText(Double.toString(Math.pow(N1,E1) + Math.pow(N2,E2)));    
           } 
-          if (sourceEvent == minusButton) { // if they choose to subtract
+          if (sourceEvent == minusButton) { 
              tl.setText(Double.toString(Math.pow(N1,E1) - Math.pow(N2,E2))); 
           } 
-          if (sourceEvent == timesButton) { // if they choose to multiply
+          if (sourceEvent == timesButton) { 
              tl.setText(Double.toString(Math.pow(N1,E1) * Math.pow(N2,E2))); 
           } 
-          if (sourceEvent == divideButton) { // if they choose to divide
-               if (N2 == 0){ // if they try to divide by zero (error)
-                  JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO"); 
-               } 
+          if (sourceEvent == divideButton) { 
+             if (N2 == 0){ 
+             JOptionPane.showMessageDialog(this, "A NUMBER CANNOT BE DIVIDED BY ZERO"); 
+             } 
              tl.setText(Double.toString(Math.pow(N1,E1) / Math.pow(N2,E2))); 
           } 
-    
+          if (sourceEvent == surprise){
+          
+             final ImageIcon icon1 = new ImageIcon("giphy.gif");
+             JOptionPane.showMessageDialog(null, "(: NOW THIS IS YOUR REAL MOOD :)", "", +JOptionPane.INFORMATION_MESSAGE, icon1);
+          }
     return; 
-   } 
+    } 
     
 //---------------------------------------------------------------------------------------------------------------------------------
     
-    public static void main(String[] args){ // main method where the GUI is called
+    public static void main(String[] args){ 
      
-       calculator myFrame = new calculator(); // creating new object of calculator class
+       calculator myFrame = new calculator(); 
  
        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
        myFrame.pack(); 
-       myFrame.setVisible(true); // make it visible
+       myFrame.setVisible(true); 
     } 
     
 //--------------------------------------------------------------------------------------------------------------------------------- 
 
-} 
+}
