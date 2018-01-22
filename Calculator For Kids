@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*; 
 import java.lang.Math;
 
-public class calculator1 extends JFrame implements ActionListener{ 
+public class calculator extends JFrame implements ActionListener{ 
 
 //---------------------------------------------------------------------------------------------------------------------------------    
     
@@ -27,7 +27,7 @@ public class calculator1 extends JFrame implements ActionListener{
     private JSpinner xSpinner2;
      
        // Constructor 
-        calculator1(){ 
+        calculator(){ 
        
           GridBagConstraints positionConst = null; 
           setTitle("Calculator"); 
