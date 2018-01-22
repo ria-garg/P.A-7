@@ -25,6 +25,8 @@ public class calculator extends JFrame implements ActionListener{
     private JLabel expNum2;
     private JSpinner xSpinner;
     private JSpinner xSpinner2;
+    private JLabel currGrade;
+    private JSlider grade;
      
        // Constructor 
         calculator(){ 
@@ -39,44 +41,52 @@ public class calculator extends JFrame implements ActionListener{
           int minYear = 1;  // Spinner min value
           int maxYear = 30; // Spinner max value
           int stepVal = 1;  // Spinner step
+          int sMin = 0;  // Slider min value
+          int sMax = 12;  // Slider max value
           
-          number1 = new JLabel("Enter Digit");
+          number1 = new JLabel("Enter Digit 1 (x):");
           number1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          number2 = new JLabel("Enter Digit"); 
+          number2 = new JLabel("Enter Digit 2 (y):"); 
           number2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
-          total = new JLabel("ANSWER");
+          total = new JLabel("ANSWER:");
           total.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           
           expNum1 = new JLabel("x^n");
+          expNum1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           expNum2 = new JLabel("y^n");
+          expNum2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          
+          currGrade = new JLabel("What is your current grade level?");
+          currGrade.setFont(new Font("Times New Roman", Font.PLAIN, 32));
          
           // Create a spinner model, the spinner, and set the change listener
           spinnerModel = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
           xSpinner = new JSpinner(spinnerModel);
+          xSpinner.setFont(new Font("Times New Roman", Font.PLAIN, 32));
       
           spinnerModel2 = new SpinnerNumberModel(initYear, minYear, maxYear, stepVal);
           xSpinner2 = new JSpinner(spinnerModel2);//xSpinner.addChangeListener();
+          xSpinner2.setFont(new Font("Times New Roman", Font.PLAIN, 32));       
                  
-          number1 = new JLabel("Enter Digit");           
-          number2 = new JLabel("Enter Digit"); 
-          total = new JLabel("ANSWER");
-            
           //color label
           Color green = new Color (50,200,25);
           total.setOpaque(true);            
           total.setForeground(green);
            
-          num1 = new JTextField(15); 
+          num1 = new JTextField(15);
+          num1.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           num1.setEditable(true); 
           num1.setText("0"); 
      
-          num2 = new JTextField(15); 
+          num2 = new JTextField(15);
+          num2.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           num2.setEditable(true); 
           num2.setText("0"); 
            
-          tl = new JTextField(15); 
+          tl = new JTextField(15);
+          tl.setFont(new Font("Times New Roman", Font.PLAIN, 32));
           tl.setEditable(false);  
-            
+          
           //button color
           addButton = new JButton("+");
           addButton.setFont(new Font("Times New Roman", Font.PLAIN, 32));
@@ -98,7 +108,14 @@ public class calculator extends JFrame implements ActionListener{
           addButton.addActionListener(this); 
           minusButton.addActionListener(this); 
           timesButton.addActionListener(this); 
-          divideButton.addActionListener(this); 
+          divideButton.addActionListener(this);
+          
+          grade = new JSlider(sMin, sMax);
+          grade.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+          grade.setMajorTickSpacing(6);
+          grade.setMinorTickSpacing(1);
+          grade.setPaintTicks(true);
+          grade.setPaintLabels(true);
           
           // Specify component's grid location  
           setLayout(new GridBagLayout()); 
@@ -173,6 +190,16 @@ public class calculator extends JFrame implements ActionListener{
           positionConst.gridy = 3;
           positionConst.insets = new Insets(10, 10, 10, 10); //top,left,bottom,right
           add(xSpinner2, positionConst);
+          
+          positionConst.gridx = 1;
+          positionConst.gridy = 5;
+          positionConst.insets = new Insets(10, 10, 10, 10);
+          add(currGrade, positionConst);
+          
+          positionConst.gridx = 1;
+          positionConst.gridy = 6;
+          positionConst.insets = new Insets(10, 10, 10, 10);
+          add(grade, positionConst);
        }    
        @Override 
 
