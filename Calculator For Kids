@@ -3,8 +3,9 @@ import java.awt.event.*;
 import java.text.*; 
 import java.util.*; 
 import javax.swing.*; 
+import java.lang.Math;
 
-public class calculator extends JFrame implements ActionListener{ 
+public class calculator1 extends JFrame implements ActionListener{ 
 
 //---------------------------------------------------------------------------------------------------------------------------------    
     
@@ -26,7 +27,7 @@ public class calculator extends JFrame implements ActionListener{
     private JSpinner xSpinner2;
      
        // Constructor 
-       calculator(){ 
+        calculator1(){ 
        
           GridBagConstraints positionConst = null; 
           setTitle("Calculator"); 
@@ -178,25 +179,32 @@ public class calculator extends JFrame implements ActionListener{
 //---------------------------------------------------------------------------------------------------------------------------------
        
        public void actionPerformed(ActionEvent event) { 
-          
+          //dogAgeYears = (Integer) yearsSpinner.getValue();
+
           String number1 = num1.getText(); 
           String number2 = num2.getText(); 
-          String exp1 = expNum1.getText();
-          String exp2 = expNum2.getText();
+          Integer exp1 = (Integer)xSpinner.getValue();
+          Integer exp2 = (Integer)xSpinner2.getValue();
           double N1 = 0;  
           double N2 = 0; 
-          int E1 = 0;
-          int E2 = 0;
+          Integer E1 = 0;
+          Integer E2 = 0;
            
           N1 = Double.parseDouble(number1); 
           N2 = Double.parseDouble(number2); 
-          E1 = Integer.parseInt(exp1);
-          E2 = Integer.parseInt(exp2);
+          
+          E1 = exp1;
+          E2 = exp2;
            
           JButton sourceEvent = (JButton) event.getSource(); 
            
-          if (sourceEvent == addButton) { 
-             tl.setText(Double.toString(Math.pow(N1,E1) + Math.pow(N2,E2))); 
+          if (sourceEvent == addButton) {
+             double add1 = Math.pow(N1,E1);
+             double add2 = Math.pow(N2,E2);
+              
+            tl.setText(Double.toString(Math.pow(N1,E1) + Math.pow(N2,E2))); 
+             
+             
           } 
           if (sourceEvent == minusButton) { 
              tl.setText(Double.toString(Math.pow(N1,E1) - Math.pow(N2,E2))); 
